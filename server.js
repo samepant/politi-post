@@ -38,28 +38,6 @@ app.prepare()
       },
       message: response.message
     };
-    /*
-    newPostcard.message = response.message;
-    
-    newPostcard.toAddress = {
-      name: 'Demo Annas',
-      address_line1: '221 Montery St',
-      address_line2: '',
-      address_city: 'San Francisco',
-      address_state: 'CA',
-      address_zip: '94131',
-      address_country: 'US'
-    };
-    newPostcard.fromAddress = {
-      name: response.name,
-      address_line1: response.address_line1,
-      address_line2: response.address_line2,
-      address_city: response.address_city,
-      address_state: response.address_state,
-      address_zip: response.address_zip,
-      address_country: 'US'
-    };
-    */
 
     //send the postcard with this asynchronous function
     newPostcard.createPostcardPromise(postcardData)

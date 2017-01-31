@@ -42,12 +42,6 @@ Lob.postcards.create({
 */
 
 module.exports = class Postcard {
-  /*constructor (toAddress, fromAddress, message) {
-    this.toAddress = toAddress;
-    this.fromAddress = fromAddress;
-    this.message = message;
-  }*/
-
   createPostcardPromise(postcardData) {
     return new Promise(
       function (resolve, reject) {
@@ -69,21 +63,4 @@ module.exports = class Postcard {
       }
     )
   }
-    /*
-    Lob.postcards.create({
-      to: this.toAddress,
-      from: this.fromAddress,
-      size: '4x6',
-      front: frontHtml,
-      back: backHtml,
-      data: {
-        message: this.message
-      }
-    }, function(err, postcard) {
-      if (err) {
-        return err;
-      }
-      return postcard;
-    });
-  }*/
 }
