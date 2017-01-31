@@ -9,4 +9,10 @@ clone the repo then run
 
 We're using next.js's directory based routing for now so our containers are in there and all the react bits that do the heavy lifting are in `./components`
 
-also requires a `secret.js` file that exports and object with `'lobAPIKey'`
+also requires a `secret.js` file that exports and object with `'lobAPIKey'`:
+```
+module.exports = {
+  'lobAPIKey': 'your_test_key_here'
+}
+
+```
