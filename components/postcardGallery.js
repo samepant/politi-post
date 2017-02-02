@@ -1,58 +1,24 @@
 import React from 'react'
 import Link from 'next/prefetch'
 
-class PostcardGallery extends React.Component {
-  constructor (props) {
-    super(props);
-
-    this.state = {
-      postcards: [{
-        name: 'issue1',
-        id: '12384721',
-        backgroundURL: 'bisque'
-        },
-        {
-        name: 'issue2',
-        id: '12381221',
-        backgroundURL: 'aliceblue'
-        },
-        {
-        name: 'issue3',
-        id: '12384141',
-        backgroundURL: 'goldenrod'
-        },
-        {
-        name: 'issue4',
-        id: '12994721',
-        backgroundURL: 'burlywood'
-        },
-        {
-        name: 'issue5',
-        id: '12384001',
-        backgroundURL: 'blue'
-        },
-        {
-        name: 'issue6',
-        id: '12384714',
-        backgroundURL: 'orchid'
-        },
-        {
-        name: 'issue7',
-        id: '42384721',
-        backgroundURL: 'lightblue'
-        }
-      ]
-    }
-  }
-
+export default class extends React.Component {
   render() {
-    let postcardList = this.state.postcards.map(function(postcard) {
-      return <li key={postcard.id}>
-              <Link href={`/create?postcardId=${postcard.id}`}><a>
-                <label>{postcard.name}</label>
-                <div className='postcard-thumb' style={{ background: postcard.backgroundURL, width: '500px', height: '340px'}}></div>
-              </a></Link>
-            </li>
+    let postcardList = this.props.postcards.map(function(postcard) {
+        function makeStyles (backgroundURL) {
+            const backgroundString = 'url(' + backgroundURL + ')';
+            return {
+                backgroundImage: backgroundString,
+                backgroundSize: '500px 340px',
+                width: '500px',
+                height: '340px'
+            }
+        }
+        return <li key={postcard._id}>
+                  <Link href={`/create?postcardId=${postcard._id}`}><a>
+                    <label>{postcard.message}</label>
+                    <div className='postcard-thumb' style={makeStyles(postcard.backgroundURL)}></div>
+                  </a></Link>
+               </li>
     });
 
     return (
@@ -60,5 +26,3 @@ class PostcardGallery extends React.Component {
     )
   }
 }
-
-export default PostcardGallery

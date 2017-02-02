@@ -1,26 +1,40 @@
 <html>
-  <head>
-    <style>
-      *, *:before, *:after {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-      }
-      body {
-        width: 11.25in;
-        height: 6.25in;
-        margin: 0;
-        padding: 0;
-        /* If using an image, the background image should have dimensions of 1875x1275 pixels. 
-        background-image: url({{background_image}});
-        */
-        background: bisque;
-        background-size: 11.25in 6.25in;
-        background-repeat: no-repeat;
-      }
-    </style>
-  </head>
+<head>
+<meta charset="UTF-8">
+<title>postcard front</title>
+<style>
+  *, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  body {
+    width: 6.25in;
+    height: 4.25in;
+    margin: 0;
+    padding: 0;
+    /* your background image should have dimensions of 1875x1275 pixels. */
+    background-image: url({{backgroundURL}});
+    background-size: 6.25in 4.25in;
+    background-repeat: no-repeat;
+  }
+  /* do not put text outside of the safe area */
+  #safe-area {
+    position: absolute;
+    width: 5.875in;
+    height: 3.875in;
+    left: 0.1875in;
+    top: 0.1875in;
+    text-align: center;
+  }
+</style>
+</head>
 
-  <body>
-  </body>
+<body>
+  <!-- do not put text outside of the safe area -->
+  <div id="safe-area">
+
+  </div>
+</body>
+
 </html>

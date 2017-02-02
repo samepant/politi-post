@@ -28,9 +28,7 @@ Lob.postcards.create({
   front: frontHtml,
   back: backHtml,
   data: {
-    name: 'yasle',
-    car: 'preVan',
-    mileage: '666'
+    message: 'working message'
   }
 }, function (err, postcard) {
   if (err) {
@@ -52,8 +50,8 @@ module.exports = class Postcard {
           front: frontHtml,
           back: backHtml,
           data: {
-            message: postcardData.message
-          }
+            message: postcardData.data.message,
+            backgroundURL
         }, function(err, postcard) {
           if (err) {
             reject(new Error(err));

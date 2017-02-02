@@ -1,0 +1,14 @@
+[
+  {
+    "message": "This is postcard 1 test message",
+    "backgroundURL": "/static/postcards/test-card1.png"
+  },
+  {
+    "message": "This is postcard 2 test message",
+    "backgroundURL": "/static/postcards/test-card2.png"
+  },
+  {
+    "message": "This is postcard 3 test message",
+    "backgroundURL": "/static/postcards/test-card3.png"
+  }
+]

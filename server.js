@@ -1,60 +1,92 @@
 const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
-const Postcard = require('./utilities/postcard.js');
+const LobPostcardMailer = require('./utilities/postcard.js');
+const Postcard = require('./models/postcardModel.js');
+const mongoose = require('mongoose');
+const config = require('./config.js')
 
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
+const dev = process.env.NODE_ENV !== 'production';
+const port = process.env.PORT || 3000; 
+const app = next({ dev });
+const handle = app.getRequestHandler();
+
+//connect to mongoose 
+mongoose.connect(config.mongoURI, function(err) {
+  if(err) {
+      console.log('connection error', err);
+  }
+
+  console.log(config.mongoURI,'connection successful');    
+
+});
 
 app.prepare()
 .then(() => {
-  const server = express()
+  const server = express();
+  const router = express.Router();
 
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: true }));
 
-  server.post('/postcard', (req, res) => {
-    let response = req.body;
-    const newPostcard = new Postcard();
-    const postcardData = {
-      toAddress: {
-        name: 'Demo Annas',
-        address_line1: '221 Montery St',
-        address_line2: '',
-        address_city: 'San Francisco',
-        address_state: 'CA',
-        address_zip: '94131',
-        address_country: 'US'
-      },
-      fromAddress: {
-        name: response.name,
-        address_line1: response.address_line1,
-        address_line2: response.address_line2,
-        address_city: response.address_city,
-        address_state: response.address_state,
-        address_zip: response.address_zip,
-        address_country: 'US'
-      },
-      message: response.message
-    };
+  //router middleware goes here (verification, logging, etc)
+  router.use(function(req, res, next) {
+    console.log('something is happening');
+    next();
+  });
 
-    //send the postcard with this asynchronous function
-    newPostcard.createPostcardPromise(postcardData)
-      .then(function (result) {
-        res.send(result);
+  router.get('/', function(req, res) {
+      res.json({ message: 'hooray! welcome to our api!' });   
+  });
+
+  router.route('/postcards')
+    //create
+    .post((req, res) => {
+      let response = req.body;
+      const newPostcardToMail = new LobPostcardMailer();
+      const postcardData = {
+        toAddress: response.to,
+        fromAddress: response.from,
+        data: response.data
+      };
+
+      //send the postcard with this asynchronous function
+      newPostcardToMail.createPostcardPromise(postcardData)
+        .then(function (result) {
+          res.send(result);
+        })
+        .catch(function (reason) {
+          console.error('Error or timeout', reason);
+        })
+    })
+    .get((req, res) => {
+      Postcard.find(function(err, postcards) {
+        if (err) res.send(err);
+        const objectifiedPostcards = {
+          postcards: postcards
+        }
+        res.json(objectifiedPostcards);
       })
-      .catch(function (reason) {
-        console.error('Error or timeout', reason);
-      })
-  })
+    })
+
+  router.route('/postcards/:postcard_id')
+    .get((req, res) => {
+      Postcard.findById(req.params.postcard_id, function(err, postcard) {
+        if (err) res.send(err);
+        res.json(postcard)
+      });
+    });
+
+  server.use('/api', router);
 
   server.get('*', (req, res) => {
     return handle(req, res)
   })
 
-  server.listen(3000, (err) => {
+  server.listen(port, (err) => {
     if (err) throw err
     console.log('> Ready on http://localhost:3000')
-  })
+  });
+
+  console.log('server magic running on port/wand/tablet ' + port);
 })
