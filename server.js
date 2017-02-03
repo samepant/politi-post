@@ -3,6 +3,7 @@ const next = require('next');
 const bodyParser = require('body-parser');
 const LobPostcardMailer = require('./utilities/postcard.js');
 const Postcard = require('./models/postcardModel.js');
+const Legislator = require('.models/repAndSenModel.js');
 const mongoose = require('mongoose');
 const config = require('./config.js')
 
@@ -69,11 +70,21 @@ app.prepare()
       })
     })
 
+  //get a single postcard template
   router.route('/postcards/:postcard_id')
     .get((req, res) => {
       Postcard.findById(req.params.postcard_id, function(err, postcard) {
         if (err) res.send(err);
         res.json(postcard)
+      });
+    });
+
+  //get a single legislator THIS IS NOT TOTALLY WORKING/DOES NOT REFLECT WHAT'S IN THE DB
+  router.route('/legislators/:bioguide_id')
+    .get((req, res) => {
+      Postcard.findOne({'bio_guide': req.params.bioguide_id}, function(err, legislator) {
+        if (err) res.send(err);
+        res.json(legislator)
       });
     });
 

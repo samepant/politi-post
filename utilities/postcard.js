@@ -1,4 +1,5 @@
 const secret = require('../secret.js');
+const config = require('../config.js');
 const Lob = require('lob')(secret.lobAPIKey);
 const fs = require('fs');
 
@@ -51,7 +52,8 @@ module.exports = class Postcard {
           back: backHtml,
           data: {
             message: postcardData.data.message,
-            backgroundURL
+            backgroundURL: config.baseURL
+          }
         }, function(err, postcard) {
           if (err) {
             reject(new Error(err));

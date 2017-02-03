@@ -1,6 +1,7 @@
 import React from 'react'
 import AddressForm from '../components/forms/addressEntry'
 import MessageForm from '../components/forms/messageEntry'
+import LegislatorSearch from '../components/forms/legislators/legislatorSearch'
 import Header from '../components/header'
 import axios from 'axios'
 
@@ -45,6 +46,7 @@ export default class extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeTo = this.handleChangeTo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -59,9 +61,13 @@ export default class extends React.Component {
     this.setState({[objectParent]: newObject});
   }
 
+  handleChangeTo(filledAddressObject) {
+    //handled differently than ^ cause the user is selecting from a list of options
+    this.setState({to: filledAddressObject});
+  }
+
   handleSubmit(event) {
     event.preventDefault();
-    console.log('submitting', this.state);
     //send address data to server
     axios.post('/api/postcards', this.state)
     .then(function (response) {
@@ -69,16 +75,15 @@ export default class extends React.Component {
     })
     .catch(function (error) {
       console.log(error);
-    });
+    }); 
   }
 
   render () {
     return (
       <div>
         <Header />
+        <LegislatorSearch address={this.state.to} onChange={this.handleChangeTo} />
         <form onSubmit={this.handleSubmit}>
-          <h2>Enter the Address to mail it to</h2>
-          <AddressForm address={this.state.to} onChange={this.handleChange} objectParent='to'/>
           <h2>Enter the Return address</h2>
           <AddressForm address={this.state.from} onChange={this.handleChange} objectParent='from'/>
 
