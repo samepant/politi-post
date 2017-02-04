@@ -2,6 +2,7 @@ import React from 'react'
 import AddressForm from '../components/forms/addressEntry'
 import MessageForm from '../components/forms/messageEntry'
 import LegislatorSearch from '../components/forms/legislators/legislatorSearch'
+import StripeCheckout from '../components/forms/stripeCheckout'
 import Header from '../components/header'
 import axios from 'axios'
 
@@ -21,6 +22,7 @@ export default class extends React.Component {
     super(props);
 
     this.state = {
+      stripeToken: '',
       data: {
         message: this.props.postcard.message,
         backgroundImage: this.props.postcard.backgroundURL
@@ -48,6 +50,7 @@ export default class extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeTo = this.handleChangeTo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleStripeToken = this.handleStripeToken.bind(this);
   }
 
   handleChange(event) {
@@ -64,6 +67,10 @@ export default class extends React.Component {
   handleChangeTo(filledAddressObject) {
     //handled differently than ^ cause the user is selecting from a list of options
     this.setState({to: filledAddressObject});
+  }
+
+  handleStripeToken(newStripeToken) {
+    this.setState({stripeToken: newStripeToken});
   }
 
   handleSubmit(event) {
@@ -89,6 +96,7 @@ export default class extends React.Component {
 
           <h2>Enter the message</h2>
           <MessageForm data={this.state.data} onChange={this.handleChange} objectParent='data'/>
+          <StripeCheckout token={this.state.stripeToken} onChange={this.handleStripeToken} />
           <button type='submit'>Send your postcard</button>
         </form>
       </div>

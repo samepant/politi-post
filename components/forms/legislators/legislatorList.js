@@ -75,7 +75,7 @@ export default class extends React.Component {
                   <input type='radio' value={index} name='chosenLegislator' onChange={this.constructChosenLegislator} />
                 </div>
                 <div className='fl w-90 pa2' style={partyColor(legislator.party)}>
-                  <p>{legislator.first_name + legislator.last_name}</p>
+                  <p>{legislator.first_name + ' ' + legislator.last_name}</p>
                   <p>{legislator.chamber}</p>
                   <p>{legislator.office}</p>
                 </div>

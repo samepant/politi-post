@@ -3,10 +3,12 @@ const next = require('next');
 const bodyParser = require('body-parser');
 const LobPostcardMailer = require('./utilities/postcard.js');
 const Postcard = require('./models/postcardModel.js');
-const Legislator = require('.models/repAndSenModel.js');
+//const Legislator = require('.models/repAndSenModel.js');
 const mongoose = require('mongoose');
-const config = require('./config.js')
-
+const config = require('./config.js');
+const secret = require('./secret.js');
+const stripe = require('stripe')(secret['stripeTestSecret']);
+const moment = require('moment-timezone');
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000; 
 const app = next({ dev });
@@ -43,22 +45,38 @@ app.prepare()
   router.route('/postcards')
     //create
     .post((req, res) => {
-      let response = req.body;
+      let request = req.body;
       const newPostcardToMail = new LobPostcardMailer();
+      const stripeToken = request.stripeToken;
+      const momentCreated = moment.unix(stripeToken.created).tz('America/Los_Angeles').format("dddd, MMMM Do YYYY, h:mm:ss a");
+      const stripeDescription = `postcard created by ${stripeToken.email} at ${momentCreated}`
       const postcardData = {
-        toAddress: response.to,
-        fromAddress: response.from,
-        data: response.data
+        toAddress: request.to,
+        fromAddress: request.from,
+        data: request.data
       };
-
-      //send the postcard with this asynchronous function
-      newPostcardToMail.createPostcardPromise(postcardData)
-        .then(function (result) {
-          res.send(result);
-        })
-        .catch(function (reason) {
-          console.error('Error or timeout', reason);
-        })
+      console.log(stripeDescription);
+      //make a stripe charge
+      stripe.charges.create({
+        amount: 110,
+        currency: 'usd',
+        source: stripeToken.id,
+        description: stripeDescription
+      }, function (err, charge) {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else if (charge) {
+          //send the postcard to Lob with this asynchronous function
+          newPostcardToMail.createPostcardPromise(postcardData)
+            .then(function (result) {
+              res.send(result);
+            })
+            .catch(function (reason) {
+              console.error('Error or timeout', reason);
+            })
+        }
+      })
     })
     .get((req, res) => {
       Postcard.find(function(err, postcards) {

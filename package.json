@@ -11,7 +11,10 @@
     "express": "^4.14.0",
     "isomorphic-fetch": "^2.2.1",
     "lob": "^3.9.0",
+    "moment-timezone": "^0.5.11",
     "mongoose": "^4.8.1",
-    "next": "^2.0.0-beta"
+    "next": "^2.0.0-beta",
+    "react-load-script": "0.0.2",
+    "stripe": "^4.15.0"
   }
 }
