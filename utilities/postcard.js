@@ -48,6 +48,7 @@ module.exports = class Postcard {
           to: postcardData.toAddress,
           from: postcardData.fromAddress,
           size: '4x6',
+          //TODO get this to handle portrait vs landscape
           front: frontHtml,
           back: backHtml,
           data: {

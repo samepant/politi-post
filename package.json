@@ -15,6 +15,8 @@
     "mongoose": "^4.8.1",
     "next": "^2.0.0-beta",
     "react-load-script": "0.0.2",
-    "stripe": "^4.15.0"
+    "react-quill": "https://github.com/alexkrolick/react-quill/archive/v2.0.2.tar.gz",
+    "stripe": "^4.15.0",
+    "styled-jsx": "^0.5.4"
   }
 }

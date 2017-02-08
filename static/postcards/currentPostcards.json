@@ -1,14 +1,22 @@
 [
   {
     "message": "This is postcard 1 test message",
-    "backgroundURL": "/static/postcards/test-card1.png"
+    "backgroundURL": "/static/postcards/test-card1.png",
+    "landscape": true
   },
   {
     "message": "This is postcard 2 test message",
-    "backgroundURL": "/static/postcards/test-card2.png"
+    "backgroundURL": "/static/postcards/test-card2.png",
+    "landscape": true
   },
   {
     "message": "This is postcard 3 test message",
-    "backgroundURL": "/static/postcards/test-card3.png"
+    "backgroundURL": "/static/postcards/test-card3.png",
+    "landscape": false
+  },
+  {
+    "message": "Women’s ability to plan and space their pregnancies has been shown to improve educational attainment and increase wages and lifetime earnings.",
+    "backgroundURL": "/static/postcards/pp-equality.png",
+    "landscape": false
   }
 ]

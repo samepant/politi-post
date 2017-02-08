@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/header'
 import PostcardGallery from '../components/postcardGallery'
+import IntroMessage from '../components/introMessage'
 import axios from 'axios'
 
 export default class extends React.Component {
@@ -21,6 +22,7 @@ export default class extends React.Component {
     return (
       <div>
         <Header />
+        <IntroMessage />
         <PostcardGallery postcards={this.props.postcards}/>
       </div>
     )
