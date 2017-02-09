@@ -24,7 +24,7 @@ export default class extends React.Component {
 
   handleSearch(e) {
     e.preventDefault();
-    const zipToSearch = e.target.elements['zipsearch'].value;
+    const zipToSearch = e.target.elements['zip'].value;
     const sunlightAPI = 'https://congress.api.sunlightfoundation.com/legislators/locate?zip=';
     axios.get(sunlightAPI + zipToSearch)
       .then(res => {
@@ -46,7 +46,7 @@ export default class extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSearch}>
-          <input type='number' name='zipsearch' placeholder='zip' />
+          <input type='number' name='zip' placeholder='zip' />
           <button type='submit'>Search for legislator</button>
         </form>
         <LegislatorsList show={this.state.showLegislators} legislators={this.state.legislators} chosen={this.state.chosenLegislator} onLegislatorChange={this.handleLegislatorChange} />

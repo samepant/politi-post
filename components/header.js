@@ -3,7 +3,7 @@ import Head from 'next/head'
 export default () => (
   <header>
     <Head>
-      <link rel="stylesheet" href="/static/tachyons.min.css" />
+      <link rel="stylesheet" href="/static/base.css" />
     </Head>
   </header>
 )

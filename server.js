@@ -58,7 +58,7 @@ app.prepare()
       console.log(stripeDescription);
       //make a stripe charge
       stripe.charges.create({
-        amount: 110,
+        amount: 150,
         currency: 'usd',
         source: stripeToken.id,
         description: stripeDescription

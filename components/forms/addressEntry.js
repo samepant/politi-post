@@ -4,10 +4,16 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleStepForward = this.handleStepForward.bind(this);
   }
 
   handleChange(e) {
     this.props.onChange(e);
+  }
+
+  handleStepForward(e) {
+    e.preventDefault();
+    this.props.onStepForward(e);
   }
 
   render() {
@@ -23,7 +29,7 @@ export default class extends React.Component {
     }
     
     return (
-        <div className='cf'>
+        <form className='cf'>
           <input data-parent={this.props.objectParent} name='name' type='text' value={this.props.address.name} placeholder='your name' onChange={this.handleChange} />
           <input data-parent={this.props.objectParent} name='address_line1' type='text' value={this.props.address.address_line1} placeholder='address line 1' onChange={this.handleChange} />
           <input data-parent={this.props.objectParent} name='address_line2' type='text' value={this.props.address.address_line2} placeholder='address line 2' onChange={this.handleChange} />
@@ -31,9 +37,9 @@ export default class extends React.Component {
           <select className='split-input state-select' dangerouslySetInnerHTML={{__html: createOptionList(states.stateList)}} data-parent={this.props.objectParent} name='address_state' value={this.props.address.address_state} onChange={this.handleChange} >            
           </select>
           <input className='split-input zip' data-parent={this.props.objectParent} name='address_zip' type='text' value={this.props.address.address_zip} placeholder='zip code' onChange={this.handleChange} />
-          <button type='submit'>Use this return address</button>
+          <button onClick={this.handleStepForward}>Use this return address</button>
           <style jsx>{`
-            div {
+            form {
               width: 100%;
               border: 1px solid orchid;
               border-radius: 2px;
@@ -87,9 +93,8 @@ export default class extends React.Component {
               border-radius: 2px;
               color: orchid;
               background: #FFF7FF;
-              width: 37%;
-              height: 42px;
               margin-top: 1rem;
+              padding: 0.75rem 1.25rem;
               float: right;
               box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
               vertical-align: top;
@@ -109,7 +114,7 @@ export default class extends React.Component {
               outline: none;
             }
           `}</style>
-        </div>
+        </form>
     )
   }
 }

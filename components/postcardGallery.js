@@ -34,16 +34,20 @@ export default class extends React.Component {
     }
 
     return (
-        <ul className='postcardGallery mw9 pa5 center'>
+        <ul className='postcardGallery'>
           <li className='galleryColumn left'>{ splitPostcards(postcardList)[0] }</li>
           <li className='galleryColumn right'>{ splitPostcards(postcardList)[1] }</li>
 
           <style jsx global>{`
             .postcardGallery {
-              margin-top: 400px;
+              margin-top: 260px;
               list-style: none;
               display: flex;
               flex-direction: row;
+              max-width: 96rem;
+              margin-left: auto;
+              margin-right: auto;
+              padding: 4rem;
             }
 
             .galleryColumn {
@@ -80,6 +84,7 @@ export default class extends React.Component {
             }
 
             .postcardImage {
+              max-width: 100%;
               width: auto;
               display: block;
             }
