@@ -1,5 +1,5 @@
 import LegislatorsList from './legislatorList'
-import 'isomorphic-fetch'
+import 'whatwg-fetch'
 
 export default class extends React.Component {
   constructor(props) {
@@ -26,12 +26,12 @@ export default class extends React.Component {
     e.preventDefault();
     const zipToSearch = e.target.elements['zip'].value;
     const sunlightAPI = 'https://congress.api.sunlightfoundation.com/legislators/locate?zip=';
-    fetch(sunlightAPI + zipToSearch)
+    
+    fetch((sunlightAPI + zipToSearch))
       .then(res => {
         return res.json();
       })
       .then( data => {
-        console.log(data);
         this.setState({
           legislators: data.results,
           showLegislators: true
