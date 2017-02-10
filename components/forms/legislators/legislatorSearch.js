@@ -1,5 +1,5 @@
-import axios from 'axios'
 import LegislatorsList from './legislatorList'
+import 'isomorphic-fetch'
 
 export default class extends React.Component {
   constructor(props) {
@@ -26,10 +26,14 @@ export default class extends React.Component {
     e.preventDefault();
     const zipToSearch = e.target.elements['zip'].value;
     const sunlightAPI = 'https://congress.api.sunlightfoundation.com/legislators/locate?zip=';
-    axios.get(sunlightAPI + zipToSearch)
+    fetch(sunlightAPI + zipToSearch)
       .then(res => {
+        return res.json();
+      })
+      .then( data => {
+        console.log(data);
         this.setState({
-          legislators: res.data.results,
+          legislators: data.results,
           showLegislators: true
         })
       })
