@@ -1,5 +1,5 @@
 import LegislatorsList from './legislatorList'
-import 'whatwg-fetch'
+import fetch from 'fetch-jsonp'
 
 export default class extends React.Component {
   constructor(props) {
