@@ -9,10 +9,7 @@ import axios from 'axios'
 export default class extends React.Component {
   static async getInitialProps() {
     const res = await axios({
-      url: '/api/postcards',
-      proxy: {
-        port: 3000
-      }
+      url: '/api/postcards'
     })
     return {postcards: res.data.postcards}
   }

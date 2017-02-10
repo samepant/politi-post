@@ -31,7 +31,7 @@ mongoose.connect(mongoURI, function(err) {
       console.log('connection error', err);
   }
 
-  console.log(config.mongoURI,'connection successful');    
+  console.log(mongoURI,'connection successful');    
 
 });
 
