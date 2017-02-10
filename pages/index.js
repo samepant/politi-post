@@ -1,17 +1,25 @@
 import CSSTransitionGroup from 'react-addons-css-transition-group'
 import CreatePostcard from '../components/createPostcard'
+import config from '../config'
 import React from 'react'
 import Header from '../components/header'
 import PostcardGallery from '../components/postcardGallery'
 import IntroMessage from '../components/introMessage'
-import axios from 'axios'
+import 'isomorphic-fetch'
+let baseURL = null;
+
+if (process.env.NODE_ENV == 'production') {
+  baseURL = config['baseURLProd'];
+} else {
+  baseURL = 'http://localhost:3000';
+}
 
 export default class extends React.Component {
   static async getInitialProps() {
-    const res = await axios({
-      url: '/api/postcards'
-    })
-    return {postcards: res.data.postcards}
+    const fetchURL = baseURL + '/api/postcards';
+    const res = await fetch(fetchURL);
+    const data = await res.json();
+    return {postcards: data.postcards};
   }
 
   constructor (props) {

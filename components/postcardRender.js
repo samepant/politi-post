@@ -31,7 +31,7 @@ export default class extends React.Component {
             </div>
           </div>
         </div>
-        <img src={this.props.content.backgroundImage} />
+        <img src={this.props.content.backgroundURL} />
         <style jsx>{`
           .scale {
             width: 100%;
