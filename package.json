@@ -2,9 +2,17 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "heroku-postbuild": "heroku-nextjs-build"
   },
+  "engines": {
+    "node": "6.9.x"
+  },
+  "cacheDirectories": [
+    "nextjs/node_modules"
+  ],
   "dependencies": {
+    "@mars/heroku-nextjs-build": "^1.1.0",
     "axios": "^0.15.3",
     "bluebird": "^3.4.7",
     "body-parser": "^1.16.0",

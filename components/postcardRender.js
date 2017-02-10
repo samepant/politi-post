@@ -74,7 +74,7 @@ export default class extends React.Component {
             position: absolute;
             padding: 3%;
             left: 0;
-            box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
+            box-shadow: 1px 1px 10px 0px rgba(145, 0, 255, 0.31);
           }
 
           .mailInfo {
@@ -104,6 +104,7 @@ export default class extends React.Component {
             position: absolute;
             top: 5%;
             left: 5%;
+            text-transform: uppercase;
           }
 
           .from p {

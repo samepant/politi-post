@@ -21,6 +21,7 @@ export default class extends React.Component {
     }
   }
 
+
   handleChange(value) {
     this.props.onChange(value);
   }
@@ -28,15 +29,17 @@ export default class extends React.Component {
   handleStepForward() {
     this.props.onStepForward();
   }
-
+  
   render() {
     return (
       <div className='cf'>
         <Head>
           <link rel="stylesheet" href="/static/quill.snow.css" />
         </Head>
-        <ReactQuill name='message' theme='snow' modules={this.state.modules} value={this.props.data.message} onChange={this.handleChange} />      
+        <ReactQuill name='message' theme='snow' modules={this.state.modules} value={this.props.data.message} onChange={this.handleChange} />
         <button onClick={this.handleStepForward}>Use this message</button>
+        <p>make sure your message doesn't extend past the bottom of the postcard!</p>
+        <p>feel free to use color and fun formating :)</p>
         <style jsx>{`
           div {
             padding: 1rem;
@@ -68,6 +71,17 @@ export default class extends React.Component {
 
           button:focus {
             outline: none;
+          }
+
+          p {
+            max-width: 230px;
+            margin: 0;
+            margin-top: 1rem;
+            font-size: 12px;
+            padding: 0.25rem 0.4rem;
+            background: #dbfff5;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
           }
         `}</style>
       </div>

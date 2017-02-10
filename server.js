@@ -13,9 +13,20 @@ const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000; 
 const app = next({ dev });
 const handle = app.getRequestHandler();
+let baseURL = null;
+let mongoURI = null;
+
+if (process.env.NODE_ENV == 'production') {
+  baseURL = config['baseURLProd'];
+  mongoURI = secret['mongoURI'];
+} else {
+  baseURL = config['baseURLDev'];
+  mongoURI = config['mongoURI'];
+}
+console.log(baseURL);
 
 //connect to mongoose 
-mongoose.connect(config.mongoURI, function(err) {
+mongoose.connect(mongoURI, function(err) {
   if(err) {
       console.log('connection error', err);
   }
@@ -68,9 +79,14 @@ app.prepare()
           res.send(err);
         } else if (charge) {
           //send the postcard to Lob with this asynchronous function
-          newPostcardToMail.createPostcardPromise(postcardData)
+          newPostcardToMail.createPostcardPromise(postcardData, baseURL)
             .then(function (result) {
-              res.send(result);
+              const response = {
+                expectedDelivery: result.expected_delivery_date,
+                email: stripeToken.email,
+                postcardLink: result.url
+              };
+              res.send(response);
             })
             .catch(function (reason) {
               console.error('Error or timeout', reason);

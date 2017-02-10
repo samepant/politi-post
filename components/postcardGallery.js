@@ -1,15 +1,27 @@
 import React from 'react'
-import Link from 'next/prefetch'
 
 export default class extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.handlePostcardSelect = this.handlePostcardSelect.bind(this);
+  }
+
+  handlePostcardSelect (e) {
+    this.props.onPostcardSelect(e);
+    this.props.onStepForward();
+  }
+
   render() {
-    const postcardList = this.props.postcards.map(function(postcard) {
-        return <ul key={postcard._id}>
-                <Link href={`/create?postcardId=${postcard._id}`}><a className=''>
-                  <img className='postcardImage' src={postcard.backgroundURL} />
-                </a></Link>
-             </ul>
-    });
+    const postcardList = (onClickFunction) => {
+      return this.props.postcards.map(function(postcard) {
+          return <ul key={postcard._id}>
+                  <a className={postcard.landscape ? 'landscape' : 'portrait'} >
+                    <img className='postcardImage' src={postcard.backgroundURL} name={postcard._id} onClick={onClickFunction}/>
+                  </a>
+               </ul>
+        })
+    };
     const splitPostcards = (postcardList) => {
         const len = postcardList.length,
               out = [];
@@ -35,8 +47,8 @@ export default class extends React.Component {
 
     return (
         <ul className='postcardGallery'>
-          <li className='galleryColumn left'>{ splitPostcards(postcardList)[0] }</li>
-          <li className='galleryColumn right'>{ splitPostcards(postcardList)[1] }</li>
+          <li className='galleryColumn left'>{ splitPostcards(postcardList(this.handlePostcardSelect))[0] }</li>
+          <li className='galleryColumn right'>{ splitPostcards(postcardList(this.handlePostcardSelect))[1] }</li>
 
           <style jsx global>{`
             .postcardGallery {
@@ -66,6 +78,7 @@ export default class extends React.Component {
             }
             
             .galleryColumn ul a {
+              cursor: pointer;
               display: block;
               box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
               transition: transform 0.1s ease-in-out;
@@ -83,10 +96,21 @@ export default class extends React.Component {
               margin: 1.5rem 0 1.5rem 1.5rem;
             }
 
+            .portrait {
+              width: 100%;
+              padding-bottom: 147%;
+              height: 0;
+            }
+
             .postcardImage {
               max-width: 100%;
               width: auto;
               display: block;
+            }
+
+            .portrait .postcardImage {
+              -webkit-transform: rotateZ(-90deg) translate(-39.5%,-0.2%) scale(1.4705);
+              transform: rotateZ(-90deg) translate(-39.5%,-0.2%) scale(1.4705);
             }
           `}</style>
         </ul>
