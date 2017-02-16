@@ -124,6 +124,10 @@ app.prepare()
 
   server.use('/api', router);
 
+  server.get('/.well-known/acme-challenge/gzTfyZdHlogXhC4G-bjtNnuPzVQo-NKvlYxnhSRKqf4', (req, res) => {
+    res.send('gzTfyZdHlogXhC4G-bjtNnuPzVQo-NKvlYxnhSRKqf4.NTqNjHH4m6yJH_6zyn5squEw4VJeyM3y-glsMl-FFCs');
+  });
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })
