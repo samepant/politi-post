@@ -3,6 +3,7 @@ const next = require('next');
 const bodyParser = require('body-parser');
 const LobPostcardMailer = require('./utilities/postcard.js');
 const Postcard = require('./models/postcardModel.js');
+const SentPostcard = require('./models/sentPostcardModel.js');
 //const Legislator = require('.models/repAndSenModel.js');
 const mongoose = require('mongoose');
 const config = require('./config.js');
@@ -66,7 +67,7 @@ app.prepare()
         fromAddress: request.from,
         data: request.data
       };
-      console.log(stripeDescription);
+
       //make a stripe charge
       stripe.charges.create({
         amount: 150,
@@ -86,7 +87,33 @@ app.prepare()
                 email: stripeToken.email,
                 postcardLink: result.url
               };
+              //send client the response
               res.send(response);
+
+              //create record in the DB that a postcard was sent
+              const sentPostcard = new SentPostcard();
+              sentPostcard['lobID'] = result.id;
+              sentPostcard['senderEmail'] = stripeToken.email;
+              sentPostcard['dateCreated'] = momentCreated;
+              sentPostcard['expectedDeliveryDate'] = result.expected_delivery_date;
+              sentPostcard['postcardURL'] = result.url;
+              sentPostcard['sentTo'] = {
+                name: result.to['name'],
+                address_line1: result.to['address_line1'],
+                address_line2: result.to['address_line2'],
+                address_city: result.to['address_city'],
+                address_state: result.to['address_state'],
+                address_zip: result.to['address_zip']
+              };
+
+              sentPostcard.save( err => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log(stripeDescription);
+                }
+
+              })
             })
             .catch(function (reason) {
               console.error('Error or timeout', reason);

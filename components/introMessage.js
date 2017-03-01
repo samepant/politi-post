@@ -67,7 +67,7 @@ export default class extends React.Component {
               </g>
             </svg>
           }
-          <p className={this.props.currentStep === 6 ? 'current' : ''}>We mail your postcard<span className='addendum'>we'll give you a tracking number, so you know when it's been delivered</span></p> 
+          <p className={this.props.currentStep === 6 ? 'current' : ''}>We mail your postcard</p> 
           {this.props.currentStep === 6 &&
             <svg version="1.1" id="pointer6" x="0px" y="0px" viewBox="0 0 314.1 103.2" enableBackground="new 0 0 314.1 103.2">
               <g>
@@ -99,7 +99,7 @@ export default class extends React.Component {
               content: 'then';
               font-size: 0.5em;
               position: absolute;
-              left: -6.5%;
+              left: -8.5%;
               top: -20%;
               transform: rotateZ(25deg);
               background: lavenderblush;

@@ -93,7 +93,6 @@ export default class extends React.Component {
             {this.props.currentState.step === 7 &&
               <div className='complete'>
                 <h3>You've sent a postcard!</h3>
-                <p>We will email tracking info to {this.props.currentState.sentPostcard.email}</p>
                 <p>It should be delivered by {this.props.currentState.sentPostcard.expectedDelivery}</p>
                 <p><a target='blank' href={this.props.currentState.sentPostcard.postcardLink} >View your final postcard here</a></p>
               </div>

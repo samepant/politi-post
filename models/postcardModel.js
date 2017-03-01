@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const postcardTemplateSchema = new Schema({
   message: {type: String, required: true},
   backgroundURL: {type: String, required: true},
-  landscape: {type: Boolean, required: true, default: true}
+  landscape: {type: Boolean, required: true, default: true},
+  creator: String,
+  creatorLink: String
 }); 
 
 const postcardTemplate = mongoose.model('PostcardTemplate', postcardTemplateSchema);

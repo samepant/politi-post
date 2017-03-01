@@ -1,17 +1,44 @@
 [
   {
-    "message": "This is postcard 1 test message",
-    "backgroundURL": "/static/postcards/test-card1.png",
-    "landscape": true
+    "message": "<p>I'm asking you to vote NO on any attempt to defund Planned Parenthood.</p><p>Stop the administration's aggressive policies that attack women's health and rights and take health care away from the people who need it most. If Congress cuts funding to Planned Parenthood, millions of people will be left without access to birth control, lifesaving cancer screenings, and other basic care. Many of them will have nowhere else to go for the health care they need.</p>",
+    "backgroundURL": "/static/postcards/haasch-3.png",
+    "landscape": true,
+    "creator": "emily haasch",
+    "creatorLink": "https://twitter.com/emhaasch"
+  },
+  {
+    "message": "<p>I'm asking you to vote NO on any attempt to defund Planned Parenthood.</p><p>Stop the administration's aggressive policies that attack women's health and rights and take health care away from the people who need it most. If Congress cuts funding to Planned Parenthood, millions of people will be left without access to birth control, lifesaving cancer screenings, and other basic care. Many of them will have nowhere else to go for the health care they need.</p><p>Women’s ability to plan and space their pregnancies has been shown to improve educational attainment and increase wages and lifetime earnings.</p>",
+    "backgroundURL": "/static/postcards/pp-equality.png",
+    "landscape": false,
+    "creator": "isha kasliwal",
+    "creatorLink": "https://twitter.com/ikasliwal"
   },
   {
     "message": "This is postcard 2 test message",
     "backgroundURL": "/static/postcards/test-card2.png",
-    "landscape": true
+    "landscape": true,
+    "creator": "sam",
+    "creatorLink": "http://twitter.com/samepant"
   },
   {
-    "message": "Women’s ability to plan and space their pregnancies has been shown to improve educational attainment and increase wages and lifetime earnings.",
-    "backgroundURL": "/static/postcards/pp-equality.png",
-    "landscape": false
+    "message": "This is postcard 2 test message",
+    "backgroundURL": "/static/postcards/haasch-2.png",
+    "landscape": true,
+    "creator": "emily haasch",
+    "creatorLink": "https://twitter.com/emhaasch"
+  },
+  {
+    "message": "The vast majority of likely voters in the US are concerned about the effects humans are having on the climate.  I call on you to do your job, and reflect our concerns.  We, the majority, expect action on climate change now to ensure the future of our children.  They're depending on us.",
+    "backgroundURL": "/static/postcards/haasch-1.png",
+    "landscape": true,
+    "creator": "emily haasch",
+    "creatorLink": "https://twitter.com/emhaasch"
+  },
+  {
+    "message": "<p>I am a constituent who supports compassionate immigration policies. I ask that you urge Trump to keep DACA in place. America is a nation of immigrants. We do not deport people from the only home they have ever known and we do not close our doors on people in need.</p><p>Please do everything in your power to oppose Trump's EO restricting immigration from Muslim majority companies and ending the Syrian refugee resettlement program.</p>",
+    "backgroundURL": "/static/postcards/test-card1.png",
+    "landscape": true,
+    "creator": "sam",
+    "creatorLink": "http://twitter.com/samepant"
   }
 ]

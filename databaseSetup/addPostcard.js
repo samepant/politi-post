@@ -8,6 +8,13 @@ const currentPostcardFile = path.resolve('./static/postcards/currentPostcards.js
 const currentPostcardJSON = fs.readFileSync(currentPostcardFile);
 const currentPostcards = JSON.parse(currentPostcardJSON);
 
+let deleteCurrent = null;
+
+if (process.argv[2] === 'deleteCurrent') {
+  deleteCurrent = true;
+} else {
+  deleteCurrent = false;
+}
 
 //connect to mongoose 
 mongoose.connect(config.mongoURI, function(err) {
@@ -15,8 +22,15 @@ mongoose.connect(config.mongoURI, function(err) {
       console.log('connection error', err);
   }
 
-  console.log(config.mongoURI,'connection successful');     
-  addPostcardsIfTheyDontExist(currentPostcards);
+  console.log(config.mongoURI,'connection successful');
+  if (deleteCurrent) {
+    mongoose.connection.db.dropCollection('postcardtemplates', function(err, result) {
+      if (err) throw err;
+      addPostcardsIfTheyDontExist(currentPostcards);
+    });
+  } else {
+    addPostcardsIfTheyDontExist(currentPostcards);
+  }
 });
 
 function addPostcardsIfTheyDontExist(postcardArray) {

@@ -3,6 +3,28 @@ import React from 'react'
 export default class extends React.Component {
   constructor (props) {
     super(props);
+
+    this.state = {
+      messageOverflowed: false
+    }
+
+    this.isOverflowed = this.isOverflowed.bind(this);
+  }
+
+  componentDidUpdate () {
+    this.isOverflowed(this.refs.message);
+  }
+
+  isOverflowed(element) {
+    //manually adjusting this height detector 
+    const manualAdjustment = 5;
+    const customHeight = element.clientHeight + manualAdjustment;
+
+    if (element.scrollHeight > customHeight && !this.state['messageOverflowed']) {
+      this.setState({messageOverflowed: true});
+    } else if (!(element.scrollHeight > customHeight) && this.state['messageOverflowed']) {
+      this.setState({messageOverflowed: false});
+    }
   }
 
   render () {
@@ -10,7 +32,7 @@ export default class extends React.Component {
       <div>
         <div className='scale'></div>
         <div className='postcardParent'>
-          <div className='postcard'>
+          <div className={this.state.messageOverflowed ? 'postcard overflowed' : 'postcard'}>
             <div className='mailInfo'>
               <div className='to'>
                 <p>{this.props.to.name}</p>
@@ -27,7 +49,7 @@ export default class extends React.Component {
               <div className='postage'>
               </div>
             </div>
-            <div className='message' dangerouslySetInnerHTML={{__html:this.props.content.message}}>
+            <div className='message' ref='message' dangerouslySetInnerHTML={{__html:this.props.content.message}}>
             </div>
           </div>
         </div>
@@ -75,6 +97,21 @@ export default class extends React.Component {
             padding: 3%;
             left: 0;
             box-shadow: 1px 1px 10px 0px rgba(145, 0, 255, 0.31);
+          }
+          
+          .overflowed {
+            background: #ffd7d7;
+          }
+
+          .overflowed:before {
+            content: "Your message is too long ☹️";
+            color: red;
+            font-weight: bold;
+            position: absolute;
+            top: 15%;
+            right: 3%;
+            font-size: 24px;
+            transform: rotateZ(-20deg);
           }
 
           .mailInfo {

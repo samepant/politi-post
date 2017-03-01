@@ -15,10 +15,11 @@ export default class extends React.Component {
   render() {
     const postcardList = (onClickFunction) => {
       return this.props.postcards.map(function(postcard) {
-          return <ul key={postcard._id}>
-                  <a className={postcard.landscape ? 'landscape' : 'portrait'} >
+          return <ul key={postcard._id} className={postcard.landscape ? '' : 'portrait-parent'}>
+                  <a className={postcard.landscape ? 'postcard landscape' : 'postcard portrait'} >
                     <img className='postcardImage' src={postcard.backgroundURL} name={postcard._id} onClick={onClickFunction}/>
                   </a>
+                  <label>by <a href={postcard.creatorLink}>{postcard.creator}</a></label>
                </ul>
         })
     };
@@ -77,23 +78,35 @@ export default class extends React.Component {
               padding: 0;
             }
             
-            .galleryColumn ul a {
+            .galleryColumn ul .postcard {
               cursor: pointer;
               display: block;
               box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
               transition: transform 0.1s ease-in-out;
             }
 
-            .galleryColumn ul a:hover {
+            .galleryColumn ul .postcard:hover {
               transform: scale(1.025);
             }
 
-            .left ul a {
-              margin: 1.5rem 1.5rem 1.5rem 0;
+            .left ul .postcard {
+              margin: 1.5rem 1.5rem 0.5rem 0;
             }
 
-            .right ul a {
-              margin: 1.5rem 0 1.5rem 1.5rem;
+            .right ul .postcard {
+              margin: 1.5rem 0 0.5rem 1.5rem;
+            }
+
+            ul label {
+              font-size: 0.75rem;
+            }
+
+            .right ul label {
+              margin-left: 1.5rem;
+            }
+
+            .galleryColumn .portrait-parent {
+              padding-right: 1.5rem;
             }
 
             .portrait {
