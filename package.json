@@ -25,7 +25,7 @@
     "next": "^2.0.0-beta",
     "react-addons-css-transition-group": "^15.4.2",
     "react-load-script": "0.0.2",
-    "react-quill": "https://github.com/alexkrolick/react-quill/archive/v2.0.2.tar.gz",
+    "react-quill": "v1.0.0-beta-1",
     "stripe": "^4.15.0",
     "styled-jsx": "^0.5.4"
   }
