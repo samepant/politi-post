@@ -7,7 +7,7 @@ export default class extends React.Component {
         <div className='intro-container'>
           <p className={this.props.currentStep === 1 ? 'current' : ''}>Pick a postcard</p>
           {this.props.currentStep === 1 &&
-            <svg version="1.1" id="pointer1"x="0px" y="0px" viewBox="0 0 164.7 313.3" enableBackground="new 0 0 164.7 313.3">
+            <svg version="1.1" id="pointer1" x="0px" y="0px" viewBox="0 0 164.7 313.3" enableBackground="new 0 0 164.7 313.3">
               <path fill="none" stroke="#FFD33A" strokeWidth="2" strokeMiterlimit="10" d="M71.6,8.4C48.4,49.8,49.9,90.3,47.4,137.7
                 c-1.7,31.6-5.2,33.6-3.3,63.1c1.5,22.9,2.5,50.2,8.1,72.4c2.6,10.2,5.7,19.6,12,27.5c0.3,0.4,1.1,0.7,1.4,0.3
                 c5.7-5,6.5-26.1,6.5-26.1c1.5-3.8,0.4,8.2,0,12.3c-0.6,6.8-0.7,13.8-3,20.2c-0.5,1.4-2.9,0.9-4.2,0.4c-16.4-5.1-15.6-11.9-28.3-29.5
@@ -105,7 +105,6 @@ export default class extends React.Component {
               background: lavenderblush;
               padding: 0.25rem 0.4rem;
               border-radius: .5rem;
-              box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
             }
 
             .current:before {
@@ -122,7 +121,6 @@ export default class extends React.Component {
               padding: 0.25rem 0.4rem;
               margin-left: 1rem;
               border-radius: .5rem;
-              box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
             }
 
             .intro-container {
@@ -134,9 +132,9 @@ export default class extends React.Component {
 
             #pointer1 {
               position: absolute;
-              width: 25%;
+              width: 28%;
               top: 10%;
-              left: 7%;
+              left: 8%;
             }
 
             svg path {
@@ -145,37 +143,37 @@ export default class extends React.Component {
 
             #pointer2 {
               position: absolute;
-              width: 35%;
+              width: 42%;
               top: 27%;
               left: 0%;
             }
 
             #pointer3 {
               position: absolute;
-              width: 28%;
+              width: 30%;
               top: 44%;
-              left: 20%;
+              left: 24%;
             }
 
             #pointer4 {
               position: absolute;
-              width: 30%;
+              width: 34%;
               top: 61%;
-              left: 20%;
+              left: 23%;
             }
 
             #pointer5 {
               position: absolute;
-              width: 11%;
+              width: 13%;
               top: 77%;
-              left: 9%;
+              left: 10%;
             }
 
             #pointer6 {
               position: absolute;
-              width: 44%;
+              width: 54%;
               top: 94%;
-              left: 0%;
+              left: -2%;
             }
           `}</style>
       </div>

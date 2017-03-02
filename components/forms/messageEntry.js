@@ -81,7 +81,6 @@ export default class extends React.Component {
             padding: 0.25rem 0.4rem;
             background: #dbfff5;
             border-radius: 8px;
-            box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
           }
         `}</style>
       </div>
