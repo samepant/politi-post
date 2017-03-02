@@ -151,8 +151,8 @@ app.prepare()
 
   server.use('/api', router);
 
-  server.get('/.well-known/acme-challenge/gzTfyZdHlogXhC4G-bjtNnuPzVQo-NKvlYxnhSRKqf4', (req, res) => {
-    res.send('gzTfyZdHlogXhC4G-bjtNnuPzVQo-NKvlYxnhSRKqf4.NTqNjHH4m6yJH_6zyn5squEw4VJeyM3y-glsMl-FFCs');
+  server.get('/.well-known/acme-challenge/Urc6C-H6AMnQ7omXZEavUhhcFHzsCYkecvUnIEVsqCg', (req, res) => {
+    res.send('Urc6C-H6AMnQ7omXZEavUhhcFHzsCYkecvUnIEVsqCg.NTqNjHH4m6yJH_6zyn5squEw4VJeyM3y-glsMl-FFCs');
   });
 
   server.get('*', (req, res) => {
