@@ -13,7 +13,7 @@ const nodemailerMailgun = nodemailer.createTransport(mg(auth));
 
 module.exports = class Emailer {
   createConfirmationEmailPromise (emailAddress, lobResponse) {
-    const messageHTML = `<p>Hi ${lobResponse.from.name}!</p><p>You've sent a postcard using <a href='https://www.congresscard.club'>congresscard.club</a>.</p><p><a href="${lobResponse.url}">You sent this postcard to ${lobResponse.to.name}</a></p>`;
+    const messageHTML = `<p>Hi ${lobResponse.from.name}!</p><p>You've sent a postcard using <a href='https://www.congresscard.club'>congresscard.club</a>.</p><p><a href="${lobResponse.url}">You sent this postcard to ${lobResponse.to.name}</a></p><p>It should be delivered on ${lobResponse['expected_delivery_date']}</p>`;
     const mailOptions = {
       from: 'notifications@congresscard.club',
       to: emailAddress,
