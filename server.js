@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const LobPostcardMailer = require('./utilities/postcard.js');
 const Postcard = require('./models/postcardModel.js');
 const SentPostcard = require('./models/sentPostcardModel.js');
+const confirmationEmailer = require('./utilities/emailConfirmation.js');
 //const Legislator = require('.models/repAndSenModel.js');
 const mongoose = require('mongoose');
 const config = require('./config.js');
@@ -114,6 +115,16 @@ app.prepare()
                 }
 
               })
+
+              //send confirmation email to postcard sender
+              const emailer = new confirmationEmailer();
+              emailer.createConfirmationEmailPromise(stripeToken.email, result)
+                .then(result => {
+                  console.log('email sent to ' + stripeToken.email);
+                })
+                .catch(reason => {
+                  console.error('Error or timeout', reason);
+                })
             })
             .catch(function (reason) {
               console.error('Error or timeout', reason);
