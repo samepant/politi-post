@@ -15,11 +15,17 @@ export default class extends React.Component {
   render() {
     const postcardList = (onClickFunction) => {
       return this.props.postcards.map(function(postcard) {
+          let creditLabel = null;
+          if (postcard.creatorLink.length > 1) {
+            creditLabel = <a href={postcard.creatorLink}>{postcard.creator}</a>;
+          } else {
+            creditLabel = <span>{postcard.creator}</span>;
+          }
           return <ul key={postcard._id} className={postcard.landscape ? '' : 'portrait-parent'}>
                   <a className={postcard.landscape ? 'postcard landscape' : 'postcard portrait'} >
                     <img className='postcardImage' src={postcard.backgroundURL} name={postcard._id} onClick={onClickFunction}/>
                   </a>
-                  <label>by <a href={postcard.creatorLink}>{postcard.creator}</a></label>
+                  <label>by {creditLabel}</label>
                </ul>
         })
     };

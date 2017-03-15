@@ -7,18 +7,18 @@
     "creatorLink": "https://twitter.com/emhaasch"
   },
   {
+    "message": "<p>Please do everything in your power to oppose Trump's EO restricting immigration from Muslim majority companies and ending the Syrian refugee resettlement program.</p>",
+    "backgroundURL": "/static/postcards/annie-1.png",
+    "landscape": false,
+    "creator": "annie yiling wang",
+    "creatorLink": ""
+  },
+  {
     "message": "<p>I'm asking you to vote NO on any attempt to defund Planned Parenthood.</p><p>Stop the administration's aggressive policies that attack women's health and rights and take health care away from the people who need it most. If Congress cuts funding to Planned Parenthood, millions of people will be left without access to birth control, lifesaving cancer screenings, and other basic care. Many of them will have nowhere else to go for the health care they need.</p><p>Women’s ability to plan and space their pregnancies has been shown to improve educational attainment and increase wages and lifetime earnings.</p>",
     "backgroundURL": "/static/postcards/pp-equality.png",
     "landscape": false,
     "creator": "isha kasliwal",
     "creatorLink": "https://twitter.com/ikasliwal"
-  },
-  {
-    "message": "This is postcard 2 test message",
-    "backgroundURL": "/static/postcards/test-card2.png",
-    "landscape": true,
-    "creator": "sam",
-    "creatorLink": "http://twitter.com/samepant"
   },
   {
     "message": "<p>Trump's Tax plans prioritize the highest income brackets and corporate entities: those who should be paying more tax will be paying less.</p><p>Take action to raise taxes on the high income brackets and on corporate profits. Trump's fiscal policies will add more to the deficit and encourage even more drastic income inequality. Oppose this!</p>",
@@ -33,12 +33,5 @@
     "landscape": true,
     "creator": "emily haasch",
     "creatorLink": "https://twitter.com/emhaasch"
-  },
-  {
-    "message": "<p>I am a constituent who supports compassionate immigration policies. I ask that you urge Trump to keep DACA in place. America is a nation of immigrants. We do not deport people from the only home they have ever known and we do not close our doors on people in need.</p><p>Please do everything in your power to oppose Trump's EO restricting immigration from Muslim majority companies and ending the Syrian refugee resettlement program.</p>",
-    "backgroundURL": "/static/postcards/test-card1.png",
-    "landscape": true,
-    "creator": "sam",
-    "creatorLink": "http://twitter.com/samepant"
   }
 ]
