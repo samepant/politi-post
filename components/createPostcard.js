@@ -56,6 +56,8 @@ export default class extends React.Component {
     requestAnimationFrame( () => {
       this.setState({isBrowser: true});
     });
+
+    window.scrollTo(0, 0);
   }         
   render () {
     return (
