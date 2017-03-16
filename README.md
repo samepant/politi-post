@@ -1,20 +1,38 @@
-app for sending postcard to your rep and senators. using lob and stripe.
+app for sending postcard to your rep and senators. using lob, stripe and next.js.
 
-built using next.js
+TO RUN LOCALLY:
 
 clone the repo then run
 
 `npm install`
-`npm run dev`
 
-We're using next.js's directory based routing for now so our containers are in there and all the react bits that do the heavy lifting are in `./components`
+Make sure you are running mongodb locally, then run:
+`node databaseSetup/addPostcard.js`
+^this adds postcard templates to your database.
 
-also requires a `secret.js` file that exports and object with `'lobAPIKey'`:
+to run the app you will need a `secret.js` file that exports an object with the following keys:
 ```
 module.exports = {
-  'lobAPIKey': 'your_test_key_here'
+  'mongoURI': '',
+  'lobAPIKey': '',
+  'liveLobKey': '',
+  'stripeTestSecret': '',
+  'stripeSecret': '',
+  'nodemailerSecretKey': ''
 }
-
 ```
+reach out if you want to use my test keys – im on keybase :)
 
-reach out if you want to use my test key if you want to help dev this site :)
+then after all that is done, run:
+`npm run dev`
+
+and it should start up.
+
+
+to do:
+- routing based on postcard designs (so people can link to a specific postcard)
+- sorting and searching of postcards by issue statement
+- local mailing addresses of congress people
+- FAX ?????
+
+

@@ -5,7 +5,7 @@ export default class extends React.Component {
     return (
       <div className='topBlock'>
         <div className='intro-container'>
-          <p className={this.props.currentStep === 1 ? 'current' : ''}>Pick a postcard</p>
+          <p className={this.props.currentStep === 1 ? 'current' : 'not-current'}>Pick a postcard</p>
           {this.props.currentStep === 1 &&
             <svg version="1.1" id="pointer1" x="0px" y="0px" viewBox="0 0 164.7 313.3" enableBackground="new 0 0 164.7 313.3">
               <path fill="none" stroke="#FFD33A" strokeWidth="2" strokeMiterlimit="10" d="M71.6,8.4C48.4,49.8,49.9,90.3,47.4,137.7
@@ -16,7 +16,7 @@ export default class extends React.Component {
                 c105.5-6.6,54.8-5.1,152.3-5"/>
             </svg>
           }
-          <p className={this.props.currentStep === 2 ? 'current' : ''}>Choose a legislator to send it to</p>
+          <p className={this.props.currentStep === 2 ? 'current' : 'not-current'}>Choose a legislator to send it to</p>
           {this.props.currentStep === 2 &&
             <svg version="1.1" id="pointer2" x="0px" y="0px" viewBox="0 0 265.8 265.5" enableBackground="new 0 0 265.8 265.5">
               <g>
@@ -29,7 +29,7 @@ export default class extends React.Component {
               </g>
             </svg>
           }
-          <p className={this.props.currentStep === 3 ? 'current' : ''}>Customize the message</p>
+          <p className={this.props.currentStep === 3 ? 'current' : 'not-current'}>Customize the message</p>
           {this.props.currentStep === 3 &&
             <svg version="1.1" id="pointer3" x="0px" y="0px" viewBox="0 0 180.6 221" enableBackground="new 0 0 180.6 221">
               <g>
@@ -41,7 +41,7 @@ export default class extends React.Component {
               </g>
             </svg>
           }
-          <p className={this.props.currentStep === 4 ? 'current' : ''}>Enter your return address<span className='addendum'>being a constituent makes them pay attention</span></p>
+          <p className={this.props.currentStep === 4 ? 'current' : 'not-current'}>Enter your return address<span className='addendum'>being a constituent makes them pay attention</span></p>
           {this.props.currentStep === 4 &&
             <svg version="1.1" id="pointer4" x="0px" y="0px" viewBox="0 0 206.1 179.2" enableBackground="new 0 0 206.1 179.2">
               <g>
@@ -54,7 +54,7 @@ export default class extends React.Component {
               </g>
             </svg>
           }
-          <p className={this.props.currentStep === 5 ? 'current' : ''}>Pay $1.50<span className='addendum'>or print and send it yourself for cheaper :)</span></p>
+          <p className={this.props.currentStep === 5 ? 'current' : 'not-current'}>Pay $1.50<span className='addendum'>or print and send it yourself for cheaper :)</span></p>
           {this.props.currentStep === 5 &&
             <svg version="1.1" id="pointer5" x="0px" y="0px" viewBox="0 0 78 146" enableBackground="new 0 0 78 146">
               <g>
@@ -67,7 +67,7 @@ export default class extends React.Component {
               </g>
             </svg>
           }
-          <p className={this.props.currentStep === 6 ? 'current' : ''}>We mail your postcard</p> 
+          <p className={this.props.currentStep === 6 ? 'current' : 'not-current'}>We mail your postcard</p> 
           {this.props.currentStep === 6 &&
             <svg version="1.1" id="pointer6" x="0px" y="0px" viewBox="0 0 314.1 103.2" enableBackground="new 0 0 314.1 103.2">
               <g>
@@ -110,6 +110,10 @@ export default class extends React.Component {
             .current:before {
               content: 'now';
               background: gold;
+            }
+
+            .not-current {
+              opacity: 0.5;
             }
 
             p:first-child:before {
