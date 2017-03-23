@@ -14,8 +14,8 @@ export default () => (
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@congress_card" />
       <meta name="twitter:title" content="Send postcards to congress REALLY easily" />
-      <meta name="twitter:description" content="just another way to let congress know how you feel! Choose a design, customize the message, choose who to send it to, pay $1.50, its super easy." />
-      <meta name="twitter:image" content="https://congresscard.club/static/twitter-card.png" />
+      <meta name="twitter:description" content="just another way to let congress know how you feel! Choose a design, customize the message, choose who to send it to, pay $1.50, it's super easy." />
+      <meta name="twitter:image" content="https://www.congresscard.club/static/twitter-card.png" />
     </Head>
   </header>
 )
